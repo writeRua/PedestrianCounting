@@ -25,7 +25,7 @@ Extract features and temporal, spatial consistancis from one or more directories
 
 ### getBlobs.m
 
-Get blobs and features of each blob.
+Get all blobs of current frame and features of each blob.
 
 ### label_blobs
 
@@ -33,4 +33,4 @@ Extract temporal and spatial consistancis from two adjacent frames; Assign index
 
 ### test.m
 
-a demo to extract blob features and consistancis from 20 directories.
+a demo which extract blob features and consistancis from 20 directories.
