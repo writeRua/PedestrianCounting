@@ -1,7 +1,8 @@
 # PedestrianCounting
+
 ### getFeatureConsistancy.m
 
-Extract features and temporal/spatial consistancis from one or more directories.
+Extract features and temporal, spatial consistancis from one or more directories.
 
 **Input**
 
@@ -13,6 +14,7 @@ Extract features and temporal/spatial consistancis from one or more directories.
 
 
 **Output**
+
 `FrameFeature`: features of each blob {frame_index, blob_id, touch_boundary, direction, ground_truth, *FeatureName*}
 
 `temproal_consistance`
@@ -20,3 +22,15 @@ Extract features and temporal/spatial consistancis from one or more directories.
 `spacial_consistance`
 
 `max_blob_index`: maximum blob index
+
+### getBlobs.m
+
+Get blobs and features of each blob.
+
+### label_blobs
+
+Extract temporal and spatial consistancis from two adjacent frames; Assign index for each blob;
+
+### test.m
+
+a demo to extract blob features and consistancis from 20 directories.
