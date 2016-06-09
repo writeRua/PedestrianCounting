@@ -1,6 +1,5 @@
-# PedestrianCounting
+# &#x1F4D9; PedestrianCounting
 
-&#x1F4D9;
 
 ### getFeatureConsistancy.m
 
