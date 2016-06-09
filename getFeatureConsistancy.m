@@ -3,7 +3,7 @@ function [FrameFeature,temproal_consistance,spacial_consistance,max_blob_index] 
 % Input:
 %   FeatureName: e.g. {'Area','Perimeter','PerimeterEdgeOrientation','Ratio','Edge','EdgeOrientation','FractalDim','GLCM'};
 %   path: roi_path, dmap_path, groundtruth_path, origin_image_dir, foreground_mask_dir
-%   opt: isoutput, min_blob, num_frame, gt_boundary_count, gt_nodirection_count, gt_only_roi_count
+%   opt: isoutput, min_blob, num_frame, gt_boundary_count, gt_nodirection_count, gt_only_roi_count, max_blob_index, frame_index
 % Output:
 %   FrameFeature: features of each blob {frame_number, blob_id,
 %                   touch_boundary, direction, ground_truth, FeatureName(29)}
@@ -12,7 +12,7 @@ function [FrameFeature,temproal_consistance,spacial_consistance,max_blob_index] 
 %   max_blob_index: maximum blob index
 
 if nargin < 2
-    error('In dir2feature(FeatureName, path, opt): Too few parameters!');
+    error('In getFeatureConsistancy(FeatureName, path, opt): Too few parameters!');
 end
 if nargin < 3
     opt.isoutput = 1;
@@ -32,7 +32,7 @@ if opt.isoutput == 1
     foreground_path = 'temp_output/foreground'; mkdir(foreground_path);
 end
 if length(fieldnames(path)) < 5
-    error('In dir2feature(FeatureName, path, opt): Too few elements in path!');
+    error('In getFeatureConsistancy(FeatureName, path, opt): Too few elements in path!');
 end
 
 
