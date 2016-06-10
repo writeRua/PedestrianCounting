@@ -1,6 +1,25 @@
 # &#x1F4D9; PedestrianCounting
 
-### test.m
+### testHolisticFeatures.m
+
+This demo presents how to extract holistic features of images from 20 directories.
+
+### getHolisticFeatures.m
+
+**Input**
+
+`FeatureName`: e.g. {Area,Perimeter,PerimeterEdgeOrientation,Ratio,Edge,EdgeOrientation,FractalDim,GLCM}
+
+`path`: roi_path, dmap_path, groundtruth_path, origin_image_dir, foreground_mask_dir
+
+`opt`: isoutput, fea_only_roi, gt_only_roi_count, frame_index
+
+
+**Output**
+
+`FrameFeature`: features of each image {*FeatureName*, label}
+
+### testFeatureConsistancy.m
 
 This demo presents how to extract blob features and consistancis from 20 directories.
 
