@@ -27,12 +27,7 @@ load(path.dmap_path);   dmap = dmap.pmapxy;
 load(path.groundtruth_path);
 [size_x, size_y] = size(roi);
 
-% boundary
-tmp = roi - (1-imdilate(1-roi,strel('diamond',1)));
-tmp(1:end,1)=1;tmp(1:end,end)=1;tmp(1,1:end)=1;tmp(end,1:end)=1;
-boundary = tmp & roi;
 if opt.isoutput
-    imwrite(boundary, [output_path '/boundary.png']);
     imwrite(roi, [output_path '/ROI.png']);
 end
 
