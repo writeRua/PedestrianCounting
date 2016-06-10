@@ -2,7 +2,7 @@
 
 ### test.m
 
-a demo which extract blob features and consistancis from 20 directories.
+This demo presents how to extract blob features and consistancis from 20 directories.
 
 ### getFeatureConsistancy.m
 
@@ -43,8 +43,8 @@ Extract temporal and spatial consistancis from two adjacent frames; Assign index
 - `dataset_path` ucsd dataset path
  
 **Outputs**
-- `Chan` ground truth (A.B Chan's dataset)
 - `ROI` 
   - all: number of all pedestrinans within ROI
   - move: except stationary pedestrians
   - dir: pedestrians for each direction
+- `Chan` ground truth (A.B Chan's dataset)
