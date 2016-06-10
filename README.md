@@ -7,7 +7,7 @@ Extract features and temporal, spatial consistancis from one or more directories
 
 **Input**
 
-`**FeatureName**`: e.g. {Area,Perimeter,PerimeterEdgeOrientation,Ratio,Edge,EdgeOrientation,FractalDim,GLCM}
+**`FeatureName`**: e.g. {Area,Perimeter,PerimeterEdgeOrientation,Ratio,Edge,EdgeOrientation,FractalDim,GLCM}
 
 `path`: roi_path, dmap_path, groundtruth_path, origin_image_dir, foreground_mask_dir
 
