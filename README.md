@@ -1,5 +1,8 @@
 # &#x1F4D9; PedestrianCounting
 
+### test.m
+
+a demo which extract blob features and consistancis from 20 directories.
 
 ### getFeatureConsistancy.m
 
@@ -32,6 +35,16 @@ Get all blobs of current frame and features of each blob.
 
 Extract temporal and spatial consistancis from two adjacent frames; Assign index for each blob;
 
-### test.m
 
-a demo which extract blob features and consistancis from 20 directories.
+### load_label.m
+
+**Parameters**: 
+- `Pedes_number` ('d' or 'f')
+- `dataset_path` ucsd dataset path
+ 
+**Outputs**
+- `Chan` ground truth (A.B Chan's dataset)
+- `ROI` 
+  - all: number of all pedestrinans within ROI
+  - move: except stationary pedestrians
+  - dir: pedestrians for each direction
