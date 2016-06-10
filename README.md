@@ -4,6 +4,10 @@
 
 This demo presents how to extract holistic features of images from 20 directories.
 
+### testFeatureConsistancy.m
+
+This demo presents how to extract blob features and consistancis from 20 directories.
+
 ### getHolisticFeatures.m
 
 **Input**
@@ -19,9 +23,6 @@ This demo presents how to extract holistic features of images from 20 directorie
 
 `FrameFeature`: features of each image {*FeatureName*, label}
 
-### testFeatureConsistancy.m
-
-This demo presents how to extract blob features and consistancis from 20 directories.
 
 ### getFeatureConsistancy.m
 
