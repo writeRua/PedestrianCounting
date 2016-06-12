@@ -1,4 +1,4 @@
-function [blobs_mask, blobs_Features] = getBlobs2(original_img,foreground_mask,dmap,roi,fg_info,FeatureName,opt)
+function [blobs_mask, blobs_Features] = getBlobs(original_img,foreground_mask,dmap,roi,fg_info,FeatureName,opt)
 
 	% find all blobs and get features of each blob
 
