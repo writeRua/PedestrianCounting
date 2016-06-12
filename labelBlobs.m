@@ -1,4 +1,4 @@
-function [cur_idx, tmp_consistance, tmp_SC, touch_boundary, max_idx] = label_blobs(cur_frame, last_frame, last_frame_idx, frame_id, max_idx, boundary)
+function [cur_idx, tmp_consistance, tmp_SC, touch_boundary, max_idx] = labelBlobs(cur_frame, last_frame, last_frame_idx, frame_id, max_idx, boundary)
     threshold = 0.8;
     idx_candidate = cell(length(cur_frame), 1);
     idx_candidate_inv = cell(length(last_frame), 1);
