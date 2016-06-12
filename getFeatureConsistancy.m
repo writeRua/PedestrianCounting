@@ -87,7 +87,7 @@ for file=1:opt.num_frame
     [current_frame_blobs_Mask,features] = getBlobs(original_img,foreground_mask,dmap,roi,fg_info,FeatureName,opt);
     
     % get indeces of current frame blobs, temproal_consistance, spacial_consistance and total blobs of all frames
-    [current_frame_blobs_Idx,temp_consis,spat_consis,touch_boundary,max_blob_index] = label_blobs(current_frame_blobs_Mask,...
+    [current_frame_blobs_Idx,temp_consis,spat_consis,touch_boundary,max_blob_index] = labelBlobs(current_frame_blobs_Mask,...
         last_frame_blobs_Mask,last_frame_blobs_Idx,frame_index,max_blob_index,boundary);
     
     features = [double(frame_index)*ones(length(current_frame_blobs_Mask), 1),current_frame_blobs_Idx,touch_boundary,features];
