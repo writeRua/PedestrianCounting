@@ -51,7 +51,7 @@ Extract features and temporal, spatial consistancis from one or more directories
 
 Get all blobs of current frame and features of each blob.
 
-### label_blobs
+### labelBlobs
 
 Extract temporal and spatial consistancis from two adjacent frames; Assign index for each blob;
 
