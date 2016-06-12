@@ -1,7 +1,9 @@
-function features=FeatureExtract(images,masks,dmap,features_kind)
-%Here images and masks should be cell of strings,where each string is a path of an image. Eg: images={'../data/1','../data/2'}. The two cells should have same length!
-%dmap is a matrix,which has the same size as each image.
-%features_kind has default value as below.You can set features_kind by yourself, but it should be a subset of the default value.
+function features=FeatureExtraction(image,mask,dmap,features_kind)
+%extracat fetures of image.
+%image: a matrix. Maybe you can construct it by imread('the path of image').
+%mask: a matrix. Maybe you can construct it by imread('the path of image').
+%dmap is a matrix,which has the same size as each image and each mask.
+%features_kind has default value as below.You can also set features_kind by yourself, but it should be a subset of the default value.
 if (nargin<3)
 	error('In FeatureExtract(images,masks,dmap,features):Too few parameters!');
 end
@@ -12,23 +14,23 @@ if (nargin==3)
 	features_kind={'SLF','Area','Perimeter','Edge','FractalDim','Ratio'};
 end
 
-if (length(images)~=length(masks))
-	error('In FeatureExtract(images,masks,dmap,features):The number of images and masks should be the same!');
-end
+%if (length(images)~=length(masks))
+%	error('In FeatureExtract(images,masks,dmap,features):The number of images and masks should be the same!');
+%end
 %features=[];
 %for i = features_kind
-%	if (strcmp(i,'slf'))
-		features.SLF=[];
+%	if (strcmp(i,'SLF'))
+%		features.SLF=[];
 %	elseif(strcmp(i,'Area'))
-		features.Area=[];
+%		features.Area=[];
 %	elseif(strcmp(i,'Perimeter'))
-		features.Perimeter=[];
+%		features.Perimeter=[];
 %	elseif(strcmp(i,'Edge'))
-		features.Edge=[];
+%		features.Edge=[];
 %	elseif(strcmp(i,'FractalDim'))
-		features.FractalDim=[];
+%		features.FractalDim=[];
 %	elseif(strcmp(i,'Ratio'))
-		features.Ratio=[];
+%		features.Ratio=[];
 %	else
 %		error(strcat(i,' is not an available kind of feature!'));
 %	end
@@ -40,30 +42,24 @@ end
 %	error('In FeatureExtract(images,masks,dmap,features):Can not read dmap');
 %end
 
-iter=1;
-while (iter <= length(images))
-	image=(imread(images{iter}));
-	mask=imread(masks{iter});
 	if(strcmp(class(mask),'logical'))
-		warning(strcat(masks{iter}), 'is a logical matrix!');
+		warning('In FeatureExtraction(image,mask,dmap,features): Mask is a logical matrix!');
 		mask=uint8(mask)*255;
 	end
-	for i = features_kind
-		if (strcmp(i,'SLF'))
-			features.SLF=cat(1,features.SLF,GetSLF(image,mask));
-		elseif(strcmp(i,'Area'))
-			features.Area=cat(1,features.Area,GetArea(image,dmap));
-		elseif(strcmp(i,'Perimeter'))
-			features.Perimeter=cat(1,features.Perimeter,GetPerimeter(image,dmap));
-		elseif(strcmp(i,'Edge'))
-			features.Edge=cat(1,features.Edge,GetEdge(image,mask,dmap));
-		elseif(strcmp(i,'FractalDim'))
-			features.FractalDim=cat(1,features.FractalDim,GetFractalDim(image,mask));
-		elseif(strcmp(i,'Ratio'))
-			features.Ratio=cat(1,features.Ratio,GetRatio(image,dmap));
-		else
-			error(strcat(i,' is not an available kind of feature!'));
-		end
+for i = features_kind
+	if (strcmp(i,'SLF'))
+		features.SLF=GetSLF(image,mask);%cat(1,features.SLF,GetSLF(image,mask));
+	elseif(strcmp(i,'Area'))
+		features.Area=GetArea(image,dmap);%cat(1,features.Area,GetArea(image,dmap));
+	elseif(strcmp(i,'Perimeter'))
+		features.Perimeter=GetPerimeter(image,dmap);%cat(1,features.Perimeter,GetPerimeter(image,dmap));
+	elseif(strcmp(i,'Edge'))
+		features.Edge=GetEdge(image,mask,dmap);%cat(1,features.Edge,GetEdge(image,mask,dmap));
+	elseif(strcmp(i,'FractalDim'))
+		features.FractalDim=GetFractalDim(image,mask);%cat(1,features.FractalDim,GetFractalDim(image,mask));
+	elseif(strcmp(i,'Ratio'))
+		features.Ratio=GetRatio(image,dmap);%cat(1,features.Ratio,GetRatio(image,dmap));
+	else
+		error(strcat(i,' is not an available kind of feature!'));
 	end
-	iter=iter+1;
 end
