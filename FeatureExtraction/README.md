@@ -1,4 +1,5 @@
-相对于version 1,改动了接口。请大家注意哟。以后应该不会再改动接口了。
+﻿与周齐做了一些讨论、对照后有了这一版。
+
 （现在先写中文的readme方便大家交流。以后等代码结构基本定型之后我回补充成中英文对照版的）
 
 
@@ -7,24 +8,27 @@ FeatureExtraction.m是提取单张图片特征的一个接口。返回值是一�
 	image：图片矩阵
 	masks：图片对应的mask的矩阵
 	dmap：normalize map 矩阵（注意不是数据集中自带的那个struct）
-	features_kind：想要求哪些特征。default={'Area','Edge','FractalDim','Perimeter','Ratio','SLF'}
-	返回值：一个结构体features。成员有:Area,Edge,FractalDim,Perimeter,Ratio,SLF。
+        roi
+        features_kind：想要求哪些特征。default={'Area','Perimeter','PerimeterOrientation','Ratio','Edge','EdgeOrientation','FractalDim','GLCM','SLF'};
+        返回值：一个结构体features。成员有:{Area,Perimeter,PerimeterOrientation,Ratio,Edge,EdgeOrientation,FractalDim,GLCM,SLF。
 
 
 FeatureExtraction_file.m是提取一个文件夹内所有图片的特征的接口
 	image:存放图片的文件夹的路径
 	mask:存放mask的文件夹的路径
 	dmap：normalize map 矩阵（注意不是数据集中自带的那个struct）
-	features_kind：想要求哪些特征。default={'Area','Edge','FractalDim','Perimeter','Ratio','SLF'}
-	返回值：一个结构体features。成员有:Area,Edge,FractalDim,Perimeter,Ratio,SLF。
+        roi
+        features_kind：想要求哪些特征。default={'Area','Perimeter','PerimeterOrientation','Ratio','Edge','EdgeOrientation','FractalDim','GLCM','SLF'};
+        返回值：一个结构体features。成员有:{Area,Perimeter,PerimeterOrientation,Ratio,Edge,EdgeOrientation,FractalDim,GLCM,SLF。
 
 
 FeatureExtraction_dataset.m是提取一个数据集内所有图片的特征的接口。（现在只能做UCSD的）
 	image_path:存放原始数据的路径。注意该路径下应该是有一些子文件夹，每个子文件夹中存放一部分数据
 	mask_path:存放数据对应的mask的路径。注意该路径下应该是有许多子文件夹，每个子文件夹中存放一部分mask
 	dmap：normalize map 矩阵（注意不是数据集中自带的那个struct）
-	features_kind：想要求哪些特征。default={'Area','Edge','FractalDim','Perimeter','Ratio','SLF'}
-	返回值：一个结构数组features。features(i)中存放第i个子文件夹的数据对应的特征。结构体features(i)的构成与FeatureExtraction_file.m中返回的结构体的构成相同。
+        roi
+        features_kind：想要求哪些特征。default={'Area','Perimeter','PerimeterOrientation','Ratio','Edge','EdgeOrientation','FractalDim','GLCM','SLF'};
+        返回值：一个结构数组features。features(i)中存放第i个子文件夹的数据对应的特征。结构体features(i)的构成与FeatureExtraction_file.m中返回的结构体的构成相同。
 
 
 
@@ -33,7 +37,7 @@ FeatureExtraction_dataset.m是提取一个数据集内所有图片的特征的�
 
 Get？.m是底层的特征提取函数
 
-boxcount.m是被底层特征提取函数调用的函数
+boxcount.m与edge_orientation.m是被底层特征提取函数调用的函数
 
 FileLooper.m是一个循环文件夹内所有（有对应后缀名的）文件的小工具。返回值是每个文件的路径的string构成的cell。参数有:
 	path:所需要循环的文件夹的路径
@@ -50,10 +54,11 @@ FileLooper.m是一个循环文件夹内所有（有对应后缀名的）文件�
 	GetSLF.m所需接受的参数额外增加了一个mask。
 		按原来的写法，调用它的方式应该为GetSLF(image.*(mask/255));
 		改动后的调用方式为GetSLF(image,mask);
-	在从图像文件中读入image和mask的时候，加了一次强制类型转换（如下）以保证鲁帮性（并对于mask是logical矩阵的情形进行类额外处理）。这里是否合理有待讨论，希望大家能给点建议
+        在从图像文件中读入image和mask的时候，加了一次强制类型转换（如下）以保证鲁帮性（并对于mask是logical矩阵的情形进行类额外处理）。这里是否合理有待讨论，希望大家能给点建议
 		image=uint8(image);
-		mask=uint8(mask);
-
-有疑问的地方：
-	通过源代码的逻辑，个人觉得GetArea.m和GetPerimeter.m的正确参数应该是(mask,map)，而不是(image,map)？？？
+        加了一些新特征：
+                GLCM（相对应A.B.Chan给出的feature中的texture的12维特征）
+                edge orientation histogram
+                perimeter orientation histogram
+        GetGLCM的调用方式请见FeatureExtraction.m。以后有闲暇会改这个底层接口，使之与其他底层特征提取代码接口一致
 
