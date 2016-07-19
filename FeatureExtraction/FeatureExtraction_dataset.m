@@ -1,4 +1,4 @@
-function features=FeatureExtraction_dataset(image_path,mask_path,dmap,feature_kinds)
+function features=FeatureExtraction_dataset(image_path,mask_path,dmap,roi,feature_kinds)
 %Extract features from one whole dataset, like UCSD.
 
 %image_path: a string, representing the path of images.Under the path there should be some subfiles, and in each subfile there is a part of dataset images.For example, '../../vidf/video/vidf'.
@@ -7,11 +7,11 @@ function features=FeatureExtraction_dataset(image_path,mask_path,dmap,feature_ki
 %feature_kinds: It has default value,see in 'README.md'.You can also set features_kind by yourself, but it should be a subset of the default value.
 
 %return an array of struct.features(i) is a struct, containing all the features of ith subfile.
-if (nargin<3)
-	error('In FeatureExtraction_dataset(image_path,mask_path,dmap,feature_kids):Too few parameters!');
+if (nargin<4)
+	error('In FeatureExtraction_dataset(image_path,mask_path,dmap,feature_kinds):Too few parameters!');
 end
-if (nargin>4)
-	error('In FeatureExtraction_dataset(image_path,mask_path,dmap,feature_kids):Too many parameters!');
+if (nargin>5)
+	error('In FeatureExtraction_dataset(image_path,mask_path,dmap,feature_kinds):Too many parameters!');
 end
 
 image_files=get_subfiles(image_path);
@@ -22,10 +22,10 @@ end
 
 features=[];
 for i=[1:length(image_files)]
-	if (nargin==4)
-		features=[features,FeatureExtraction_file(image_files{i},mask_files{i},dmap,feature_kinds)];
-	elseif (nargin==3)
-		features=[features,FeatureExtraction_file(image_files{i},mask_files{i},dmap)];
+	if (nargin==5)
+		features=[features,FeatureExtraction_file(image_files{i},mask_files{i},dmap,roi,feature_kinds)];
+	elseif (nargin==4)
+		features=[features,FeatureExtraction_file(image_files{i},mask_files{i},dmap,roi)];
 	end
 end
 
