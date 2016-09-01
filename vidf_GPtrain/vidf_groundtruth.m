@@ -9,8 +9,7 @@ savepath='D:\lab\People_Counting\vidf_Y';
 
 %================================
 
-%the_location_before=pwd;
-%cd(datapath);
+
 addpath(datapath);
 Y=[];
 for i = 0:19
