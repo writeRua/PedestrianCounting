@@ -1,5 +1,5 @@
 function [ new_image ] = put_color_on( image,roi,color )
-%Ahh, I'sorry that I can't think up a name suit for this function.
+%Ahh, I'm sorry that I can't think up a suitable name for this function.
 %Anyway this function is to change the specific channel(rgb_channel).
 %If the r(g,b) channel is >0, then change the r(g,b) channel in roi to the same as color's r(g,b) channel.
 

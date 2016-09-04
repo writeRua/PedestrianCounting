@@ -1,9 +1,9 @@
 function [ color ] = num2color( num,base_num,base_color )
 %It's a mapping from num to color.
-%base_num and base color are parameters of the mapping.
+%base_num and base_color are parameters of the mapping.
 
 %The mapping satisfy the property below:
-%    It convert the base_color to the corresponding base_num.
+%    It maps the base_color to the corresponding base_num.
 %    It's linearly fitted between every pair of neighboring base points. 
 
 %if length(base_num)~=length(base_color)

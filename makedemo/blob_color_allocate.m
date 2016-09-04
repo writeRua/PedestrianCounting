@@ -1,4 +1,10 @@
 function blob_color=blob_color_allocate(blobs,last_blobs,last_blob_color,total_color_kinds)
+%To get which colors are used to represent the blobs in the demo.
+%This function allocate the same color for the same blob in different frames.
+
+%last_blobs: a cell, contains the blobs in the last frame.
+%last_blob_color: a vector, indicating the color allocating in the last frame.
+%total_color_kinds: how many kinds of colors can be used.
 blob_color=zeros(length(blobs));
 for i=1:length(blobs)
     temp=true;

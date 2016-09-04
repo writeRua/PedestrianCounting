@@ -1,7 +1,7 @@
 %To make a picture of colorbar, which shows a mapping from color to num.
 
 %The mapping satisfy the property below:
-%    It convert the base_color to the corresponding base_num.
+%    It maps the base_color to the corresponding base_num.
 %    It's linearly fitted between every pair of neighboring base points. 
 
 
@@ -11,21 +11,18 @@
 %=======basic settings:
 
 savepath='D:\lab\People_Counting\colorbar.png';
-%base_color={[255,0,0],[255,255,0],[0,255,0]};
-%base_color={[255,0,0],[255,255,0],[0,255,0],[0,255,255],[0,0,255]};
-base_color={[0,255,0],[0,255,255],[0,0,255],[255,0,255],[255,0,0]};
-%base_num={1,33,65,97,128};
-base_num={0,5,10,15,20};
+base_color={[0,255,0],[0,255,255],[0,0,255],[255,0,255],[255,0,0]}; %see above
+base_num={0,5,10,15,20}; %see above
 mark_num={0,5,10,15,20}; %Which points that need a mark.
 color_bar_size=[128,30];
 image_size=[150,50];
 color_bar_basepoint=[11,1];
-fontsize=10;
+fontsize=10; %the size of num marked on the image.
 
 
 %=====================
 
-num_length_scale=(base_num{length(base_num)}-base_num{1})/color_bar_size(1);
+num_length_scale=(base_num{length(base_num)}-base_num{1})/color_bar_size(1); %the scale between num and length of colorbar
 color_bar=zeros([color_bar_size,3],'uint8');
 for i=1:color_bar_size(1)
     for j=1:color_bar_size(2)

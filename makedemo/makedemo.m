@@ -20,15 +20,15 @@ roi=roi.mask;
 addpath('D:\lab\People_Counting\code\NewFeatureExtraction'); %the path of code for FeatureExtraction
 addpath('D:\lab\People_Counting\code\train_gp');%the path of code for dealing with blobs, like get_blob_mask.m and count_blob_person.m
 
-range=14:19;
+range=14:19;  %which part of the dataset is to be dealt with. Dataset vidf has parts 0-19.(Actually more parts. But only these parts have groundtruth.) 
 %range=19;
 image_size=[158,238];
 colors={[0,0,255],[0,255,0],[255,0,0],[0,255,255],[255,0,255],[255,255,0]};
 
 feature_kind={'Area','Perimeter','PerimeterOrientation','Ratio','Edge','EdgeOrientation','FractalDim','GLCM'};
 
-colorbar_basecolor={[0,255,0],[0,255,255],[0,0,255],[255,0,255],[255,0,0]};
-colorbar_basenum={0,5,10,15,20};
+colorbar_basecolor={[0,255,0],[0,255,255],[0,0,255],[255,0,255],[255,0,0]}; %see base_color in num2color.m
+colorbar_basenum={0,5,10,15,20}; %see base_num in num2color.m
 colorbar=imread('D:\lab\People_Counting\colorbar.png');
 
 

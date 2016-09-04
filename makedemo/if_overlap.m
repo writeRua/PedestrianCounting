@@ -1,6 +1,6 @@
 function [ if_overlap ] = if_overlap( mask1,mask2,min_overlap_rate )
-%To judge if overlap between two masks.  
-%min_overlap_rate has defauut value 0.5
+%To judge if there is overlap between two masks.  
+%min_overlap_rate has default value 0.5
 
 if (nargin<2)
     error('In if_overlap(mask1,mask2,min_overlap_rate):Too few parameters!');
